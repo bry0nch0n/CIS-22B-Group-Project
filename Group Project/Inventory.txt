@@ -1,4 +1,4 @@
-00002
+00005
 00001
 9780375703768
 House of Leaves
@@ -20,4 +20,37 @@ Fantagraphics
 24
 2
 16.50
+19.00
+00003
+9780547249643
+1984
+George Orwell
+Secker and Warburg
+2011
+03
+05
+1
+13.00
+16.00
+00004
+9780679601395
+Invisible Man
+Ralph Ellison
+Random House
+2000
+02
+04
+1
+15.00
+18.00
+00005
+9780452284241
+Animal Farm
+George Orwell
+Secker and Warburg
+2010
+02
+04
+1
+16.00
 19.00
