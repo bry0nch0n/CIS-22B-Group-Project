@@ -15,6 +15,7 @@ int main()
 	int iNumBooks;
 	ifstream inventoryFile;
 	string sFilename;
+	double dTotalWholeSaleValue = 0.00, dTotalRetailPrice = 0.00;
 
 	//enumerated data type for use with iDateLocal
 	enum eDate { YEAR, MONTH, DAY };
@@ -26,7 +27,7 @@ int main()
 	string sTitleLocal, sAuthorLocal, sPublisherLocal;
 
 	//Reading Inventory File Name
-	cout << "Enter filename:\n";
+	/*cout << "Enter filename: ";
 	cin >> sFilename;
 	inventoryFile.open(sFilename);
 
@@ -35,8 +36,10 @@ int main()
 		cout << "\nInvalid filename.\nEnter filename:\n";
 		cin >> sFilename;
 		inventoryFile.open(sFilename);
-	}
+	}*/
 
+	//Default "Inventory.txt"
+	inventoryFile.open("Inventory.txt");
 
 	//Reading Inventory File into Inventory Vector
 	inventoryFile >> iNumBooks;
@@ -75,40 +78,72 @@ int main()
 
 		inventoryFile >> dRetailPriceLocal;
 		vInventory[i].setdRetailPrice(dRetailPriceLocal);
-
-		//cout << "Identifier: " << iIdentifierLocal << endl;
-		//cout << "ISBN-13: " << lliISBNLocal << endl;
-		//cout << "Title: " << sTitleLocal << endl;
-		//cout << "Author : " << sAuthorLocal << endl;
-		//cout << "Publisher: " << sPublisherLocal << endl;
-		//cout << "Year: " << iDateLocal[YEAR] << endl;
-		//cout << "Month: " << iDateLocal[MONTH] << endl;
-		//cout << "Day: " << iDateLocal[DAY] << endl;
-		//cout << "Quantity: " << iQuantityLocal << endl;
-		//cout << "Wholesale Cost: $" << setprecision(2) << fixed << dWholeSaleCostLocal << endl;
-		//cout << "Retail Price: $" << dRetailPriceLocal << endl << endl;
-
 	}
 
 	//Test Output of Book Inventory using Getters from cBook Class
+	cout << endl;
 	for (int i = 0; i < iNumBooks; i++)
 	{
-		cout << "Identifier: " << vInventory[i].cBook::getiIdentifier() << endl;
-		cout << "ISBN-13: " << vInventory[i].cBook::getlliISBN() << endl;
-		cout << "Title: " << vInventory[i].cBook::getsTitle() << endl;
-		cout << "Author : " << vInventory[i].cBook::getsAuthor() << endl;
-		cout << "Publisher: " << vInventory[i].cBook::getsPublisher() << endl;
-		cout << "Year: " << vInventory[i].cBook::getiDateYear() << endl;
-		cout << "Month: " << vInventory[i].cBook::getiDateMonth() << endl;
-		cout << "Day: " << vInventory[i].cBook::getiDateDay() << endl;
-		cout << "Quantity: " << vInventory[i].cBook::getiQuantity() << endl;
-		cout << "Wholesale Cost: $" << setprecision(2) << fixed << vInventory[i].cBook::getdWholeSaleCost() << endl;
-		cout << "Retail Price: $" << vInventory[i].cBook::getdRetailPrice() << endl << endl;
+		if (vInventory[i].cBook::getiQuantity() >= 1)
+		{
+			cout << "Identifier: " << vInventory[i].cBook::getiIdentifier() << endl;
+			cout << "ISBN-13: " << vInventory[i].cBook::getlliISBN() << endl;
+			cout << "Title: " << vInventory[i].cBook::getsTitle() << endl;
+			cout << "Author : " << vInventory[i].cBook::getsAuthor() << endl;
+			cout << "Publisher: " << vInventory[i].cBook::getsPublisher() << endl;
+			cout << "Year: " << vInventory[i].cBook::getiDateYear() << endl;
+			cout << "Month: " << vInventory[i].cBook::getiDateMonth() << endl;
+			cout << "Day: " << vInventory[i].cBook::getiDateDay() << endl;
+			cout << "Quantity: " << vInventory[i].cBook::getiQuantity() << endl;
+			cout << "Wholesale Cost: $" << setprecision(2) << fixed << vInventory[i].cBook::getdWholeSaleCost() << endl;
+			cout << "Retail Price: $" << vInventory[i].cBook::getdRetailPrice() << endl << endl;
+		}
+		
+		else;
 	}
 
+	//Total Wholesale Value
+	cout << "Wholesale Value\n";
+	for (int i = 0; i < iNumBooks; i++)
+	{
+		if (vInventory[i].cBook::getiQuantity() >= 1)
+		{
+			dTotalWholeSaleValue += vInventory[i].cBook::getdWholeSaleCost();
+			cout << vInventory[i].cBook::getsTitle() << ": $" << vInventory[i].cBook::getdWholeSaleCost() << endl;
+		}
+
+		else;
+	}
+	cout << "\nTotal Wholesale Value: $" << dTotalWholeSaleValue << "\n\n";
+
+	//Total Retail Price
+	cout << "Retail Value\n";
+	for (int i = 0; i < iNumBooks; i++)
+	{
+		if (vInventory[i].cBook::getiQuantity() >= 1)
+		{
+		dTotalRetailPrice += vInventory[i].cBook::getdRetailPrice();
+		cout << vInventory[i].cBook::getsTitle() << ": $" << vInventory[i].cBook::getdRetailPrice() << endl;
+		}
+
+		else;
+	}
+	cout << "\nTotal Retail Value: $" << dTotalRetailPrice << "\n\n";
+
+	//List by Quantity
+	cout << "List by Quantity\n";
+
+	
+
+	//List by Cost
+	cout << "List by Wholesale Cost\n";
+
+
+	//List by Age
+	cout << "List by Age\n";
 
 	cin.ignore();
-	cout << "\nPress enter to exit.\n";
+	cout << "\n\nPress enter to exit.\n";
 	cin.get();
 	
 	inventoryFile.close();
