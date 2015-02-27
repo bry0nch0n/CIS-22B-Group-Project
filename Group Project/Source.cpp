@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
 	int iNumBooks;
-	ifstream inventoryFile;
+	fstream inventoryFile;
 	string sFilename;
 	double dTotalWholeSaleValue = 0.00, dTotalRetailPrice = 0.00;
 
@@ -27,7 +27,7 @@ int main()
 	string sTitleLocal, sAuthorLocal, sPublisherLocal;
 
 	//Reading Inventory File Name
-	/*cout << "Enter filename: ";
+	cout << "Enter filename: ";
 	cin >> sFilename;
 	inventoryFile.open(sFilename);
 
@@ -35,11 +35,11 @@ int main()
 	{
 		cout << "\nInvalid filename.\nEnter filename:\n";
 		cin >> sFilename;
-		inventoryFile.open(sFilename);
-	}*/
+		inventoryFile.open("sFilename", ios::in, ios::out);
+	}
 
 	//Default "Inventory.txt"
-	inventoryFile.open("Inventory.txt");
+	//inventoryFile.open("Inventory.txt", ios::in, ios::out);
 
 	//Reading Inventory File into Inventory Vector
 	inventoryFile >> iNumBooks;
